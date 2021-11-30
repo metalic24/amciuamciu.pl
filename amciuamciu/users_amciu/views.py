@@ -1,5 +1,20 @@
 from django.shortcuts import render
+from .forms import  CreateUserForm
 
-def register(requset):
+def register(request):
+    form = CreateUserForm(request.POST)
+    if form.is_valid():
+        email = form.cleaned_data.get("email")
+        form.save()
 
-   return  render(requset,"register.html",{})
+    context={
+        'form':form
+    }
+
+    return render(request,"register.html",context)
+
+
+
+def login(request):
+
+   return  render(request,"login.html",{})
