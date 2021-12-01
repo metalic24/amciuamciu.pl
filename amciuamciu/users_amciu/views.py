@@ -46,3 +46,7 @@ def hello_login(request):
 
 
 
+#todo wylogowanie
+
+#todo przekierowania
+ 
