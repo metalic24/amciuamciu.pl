@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{%block content%}
+{{request.user.name}}
+
+{% for obj in objs %}
+
+<h1>{{obj.name}}</h1>
+<li>
+    <ul>{{obj.kitchen_type}}</ul>
+</li>
+
+{% endfor %}
+
+
+
+  
+{% endblock %}

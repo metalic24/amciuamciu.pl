@@ -21,3 +21,10 @@ def create_restaurant(request):
     current_user = request.user
     
     return render(request,"restaurant/create_restaurant.html",context)
+
+def show_restaurants(request):
+    obj = restaurant.objects.all()
+
+    context={"objs" : obj}
+
+    return render(request,"restaurant/show_restaurant.html",context)
