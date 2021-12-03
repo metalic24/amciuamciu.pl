@@ -2,7 +2,7 @@
 
 {%block content%}
 {{request.user.name}}
-<form method="post">{% csrf_token %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
 
     {{form.as_p}}
   

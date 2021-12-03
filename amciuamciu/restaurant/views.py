@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import restaurant
 from .forms import Create_restaurant
 
 
 
 def create_restaurant(request):
-    form = Create_restaurant(request.POST)
+    form = Create_restaurant(request.POST, request.FILES)
     user = User.objects.get(username=request.user.username)
 
     if form.is_valid():
@@ -14,6 +14,8 @@ def create_restaurant(request):
         instance = form.save(commit=False)
         instance.owner= user
         instance.save()
+        return redirect(show_restaurants)
+
 
     context={
         'form':form

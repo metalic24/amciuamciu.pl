@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class restaurant(models.Model):
     name = CharField(null=False,max_length=120)
     kitchen_type = CharField(max_length=120)
-    img_path = CharField(null=False,max_length=255)
+    img_path = models.ImageField(upload_to='images/')
     street = CharField(max_length=120)
     local_number = CharField(max_length=120)
     city = CharField(max_length=120)
