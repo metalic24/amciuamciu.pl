@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 
 {%block content%}
-{{request.user.name}}
 
 {% for obj in objs %}
-<a href='../menu/{{obj.id}}'>
+
 <h1>{{obj.name}}</h1>
 <li>
     <ul>{{obj.id}}</ul>
-    <ul>{{obj.kitchen_type}}</ul>
-    <ul><img src="{{obj.img_path.url}}"/>
+    <ul>{{obj.name}}</ul>
+    <ul>{{obj.description}}</ul>
+    <ul>{{obj.price}} PLN</ul>
+    
    
     </ul>
     
 </li>
-</a>
+
 {% endfor %}
 
 

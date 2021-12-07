@@ -16,5 +16,8 @@ class restaurant(models.Model):
     pass_code = IntegerField()
     owner = ForeignKey(User, on_delete=CASCADE, null=False, related_name="owns")
 
+    def get_menu_viev(self):
+        return f"menu/{self.id}/"
+
 
 
