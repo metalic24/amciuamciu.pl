@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     #own
 
     'restaurant',
+    'menu',
+    
 ]
 
 MIDDLEWARE = [
