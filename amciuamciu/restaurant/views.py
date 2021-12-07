@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import restaurant
 from .forms import Create_restaurant
 
@@ -30,3 +30,12 @@ def show_restaurants(request):
     context={"objs" : obj}
 
     return render(request,"restaurant/show_restaurant.html",context)
+
+def delete_restaurant(request,id):
+    obj = get_object_or_404(restaurant, id=id)
+
+    if request.method == "POST":
+        obj.delete()
+    context={"objs" : obj}
+
+    return render(request,"restaurant/delete_restaurant.html",context)
