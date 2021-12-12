@@ -26,8 +26,11 @@ def create_restaurant(request):
 
 def show_restaurants(request):
     obj = restaurant.objects.all()
+    objct = User.objects.all()
 
-    context={"objs" : obj}
+    context={"objs" : obj,
+             "objcts" : objct
+             }
 
     return render(request,"restaurant/show_restaurant.html",context)
 

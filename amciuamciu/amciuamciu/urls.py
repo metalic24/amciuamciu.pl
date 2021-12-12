@@ -25,7 +25,7 @@ urlpatterns = [
     path('users_amciu/',include('users_amciu.urls')),
     path('restaurant/',include('restaurant.urls')),
     path('menu/',include('menu.urls')),
-    #path('zamowienia/', include('zamowienia.urls')),
+    path('zamowienia/', include('zamowienia.urls')),
     path('admin/', admin.site.urls),
     
 ]
