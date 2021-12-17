@@ -3,8 +3,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .models import restaurant
 from .forms import Create_restaurant
 
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/users_amciu/login/')
 def create_restaurant(request):
     form = Create_restaurant(request.POST, request.FILES)
     user = User.objects.get(username=request.user.username)
@@ -34,11 +36,14 @@ def show_restaurants(request):
 
     return render(request,"restaurant/show_restaurant.html",context)
 
+@login_required(login_url='/users_amciu/login/')
 def delete_restaurant(request,id):
     obj = get_object_or_404(restaurant, id=id)
-
-    if request.method == "POST":
-        obj.delete()
-    context={"objs" : obj}
+    if request.user.id == obj.owner_id:
+        if request.method == "POST":
+            obj.delete()
+        context={"objs" : obj}
+    else:
+         return  render(request,"restaurant",{})
 
     return render(request,"restaurant/delete_restaurant.html",context)
