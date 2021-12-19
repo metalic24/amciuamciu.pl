@@ -1,3 +1,9 @@
 body{
     background-color: rgb(221, 197, 165);
 }
+
+p#cart-no{
+
+    background-color: red;
+    color: white;
+}
