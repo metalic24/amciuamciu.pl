@@ -16,7 +16,7 @@ for(var i=0; i<products.length; i++)
         id: parseInt( menu_ids[i].innerHTML),
         rest_id: parseInt(restaurant_ids[i].innerHTML),
         name: dishes_names[i].innerHTML,
-        price: parseInt( prices[i].innerHTML),
+        price:  parseFloat( prices[i].innerHTML),
         in_cart: 0
 
 
@@ -74,7 +74,36 @@ function cartNumber(product)
         document.querySelector('#cart-no').textContent = 1;
     }
 
+    setIncart(product);
    
+}
+
+function setIncart(product)
+{
+    let cartItem = localStorage.getItem("productInCart");
+    cartItem = JSON.parse(cartItem);
+
+    if(cartItem != null)
+    {
+        if(cartItem[product.id] ==undefined)
+        {
+            cartItem={
+                ...cartItem,
+                [product.id]: product
+            }
+        }
+        cartItem[product.id].in_cart +=1;
+    }
+    else
+    {
+        product.in_cart = 1;
+        cartItem={
+            [product.id]: product
+        }
+
+    }
+   
+    localStorage.setItem("productInCart", JSON.stringify(cartItem));
 }
 
 onLoadCartNumbers();
