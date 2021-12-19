@@ -1,4 +1,4 @@
-var carts = document.querySelectorAll('.add-to-cart');
+let carts = document.querySelectorAll('.add-to-cart');
 
 let products = document.querySelectorAll('.obj');
 let restaurant_ids = document.querySelectorAll('.rest_id');
@@ -20,24 +20,34 @@ for(var i=0; i<products.length; i++)
         in_cart: 0
 
 
-    }
+    };
 
     products_list.push(object);
+
+
+
+    
 }
 
-console.log(products_list);
 
-for(var i=0; i<carts.length; i++)
+
+for(let i=0; i<carts.length; i++)
 {
+    
     carts[i].addEventListener('click',()=>{
 
-       cartNumber();
+        cartNumber(products_list[i]);
+       
+        
+      
     })
+    
 }
 
 
 function onLoadCartNumbers()
 {
+    
     let productNo = localStorage.getItem('cartNumbers');
     productNo = parseInt(productNo);
     if(productNo)
@@ -47,8 +57,10 @@ function onLoadCartNumbers()
     }
 }
 //zlicz ilość w koszyku
-function cartNumber()
+function cartNumber(product)
 {
+   
+    console.log(product);
     let productNo = localStorage.getItem('cartNumbers');
     productNo = parseInt(productNo);
     if(productNo)
