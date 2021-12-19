@@ -1,8 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import menu
 from .forms import Create_menu
 
 from restaurant.models import restaurant as rest
+
+@login_required(login_url='/users_amciu/login/')
 def create_menu(request,rest_id):
     form = Create_menu(request.POST)
     restaurant = rest.objects.get(id = rest_id)
