@@ -14,11 +14,14 @@
 <li>
 <h1>{{obj.name}}</h1>
 <ul>
-   
+    <li style="display: none;" ><obj class="obj">{{obj}}</obj></li>
+    <li style="display: none;" ><obj class="id">{{obj.id}}</obj></li>
+    <li ><obj class="rest_id">{{obj.restaurant_id}}</obj></li>
     <li style="display: none;">{{obj.owner_id}}</li>
     <li class="name">{{obj.name}}</li>
     <li>{{obj.description}}</li>
-    <li>{{obj.price}} PLN</li>
+    <li ><obj class="price">{{obj.price}}</obj> PLN</li>
+
     
    
     <li> <a   class="add-to-cart btn btn-primary" href="#" > Dodaj do zamówienia</a></li>
