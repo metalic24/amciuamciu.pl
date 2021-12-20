@@ -33,31 +33,55 @@ def make_order(request):
 
 	form = MakeOrder(request.POST)
 	user = User.objects.get(username=request.user.username)
-	products = dict()
-	
-	
-	
+	items =[]
+	print(request.POST)
 	if request.method == 'POST':
+			
 			if request.POST.get('objects') != None:
-				prducts_str = str(request.POST.get('objects'))
-				products = json.loads(prducts_str)
-		
-			
-			
-				
- 
-			
-			
+				products_str = request.POST.get('objects')
+				products = json.loads(products_str)
+				for key in products.keys():
+					dic={}
+					
+					for key2 in products[key].keys():
+						dic[key2] = products[key][key2]
+						
+					items.append(dic)
 	
 
 
 
 	if form.is_valid() and request.method == 'POST':
 		
+	
 		instance = form.save(commit=False)
 		instance.customer = user
 		instance.bill = 0
-		form.save()
+		order =	form.save()
+		
+			
+		
+		for item in items:
+			ordered_item= Ordered_Items(
+				order = order,
+				menu_id = item['id'],
+				name = item['name'],
+				price = item['price'],
+				total_number = item['in_cart']
+				
+			)
+			print(item)
+			
+			ordered_item.save()
+
+
+		
+
+		
+			
+	
+	
+	
 
 		
 		
