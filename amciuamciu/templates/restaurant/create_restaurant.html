@@ -2,7 +2,9 @@
 
 {%block content%}
 {{request.user.name}}
-<form method="post" enctype="multipart/form-data">{% csrf_token %}
+
+
+{% comment %} <form method="post" enctype="multipart/form-data">{% csrf_token %}
 
     {{form.as_p}}
   
@@ -10,8 +12,28 @@
 
 {% for message in messages%}
 <p id="">{{message}}</p>
-{% endfor %}
+{% endfor %} {% endcomment %}
 
+
+
+<div class="row">
+
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+            {{form.as_p}}
+        </div>
+      </div>
+      <div class="waves-effect waves-light btn">
+        <input type="submit" value="Zaloz restauracje">
+    </div>
+    </form>
+    {% for message in messages%}
+    <p id="">{{message}}</p>
+    {% endfor %}
+
+  </div>
 
   
 {% endblock %}

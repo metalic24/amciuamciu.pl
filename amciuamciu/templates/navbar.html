@@ -48,6 +48,11 @@
             </ul>
           </li>
         </ul>
+
+        {# user #}
+        <ul class="navbar-nav right">
+          <li class="nav-item"><a class="nav-link" href="/users_amciu/hello">{{request.user.username}}</a></li>
+        </ul>
   
         <!-- Icons -->
         <ul class="navbar-nav d-flex flex-row me-1">

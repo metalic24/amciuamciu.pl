@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import menu
 from .forms import Create_menu
 
@@ -9,21 +9,21 @@ from restaurant.models import restaurant as rest
 def create_menu(request,rest_id):
     form = Create_menu(request.POST)
     restaurant = rest.objects.get(id = rest_id)
-
-    if form.is_valid():
-        name = form.cleaned_data.get("name")
-        instance = form.save(commit=False)
-        instance.restaurant= restaurant
-        instance.save()
+    if request.user.id == restaurant.owner.id:
         
+        if form.is_valid():
+            name = form.cleaned_data.get("name")
+            instance = form.save(commit=False)
+            instance.restaurant= restaurant
+            instance.save()
 
-
-    context={
-        'form':form
-    }
+        context={
+            'form':form
+        }
     
-    
-    return render(request,"menu/create_menu.html",context)
+        return render(request,"menu/create_menu.html",context)
+    else:
+        return render(request, "restaurant/nope.html",{})
 
 def show_menu(request, rest_id):
     objs = menu.objects.filter(restaurant_id = rest_id)

@@ -8,6 +8,7 @@ def register(request):
     if form.is_valid():
         email = form.cleaned_data.get("email")
         form.save()
+        return redirect(viev_login)
 
     context={
         'form':form

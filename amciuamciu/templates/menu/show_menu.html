@@ -7,10 +7,11 @@
 
 {% load static %}
 
+
+
+{% comment %} 
 <ol>
-
-
-{% comment %} {% for obj in objs %}
+{% for obj in objs %}
 <li>
 <h1>{{obj.name}}</h1>
 <ul>
@@ -28,13 +29,14 @@
     
 </ul>
 </li>
-{% endfor %} {% endcomment %}
+{% endfor %} 
+</ol>
+{% endcomment %}
 
 
 <div class="row">
 
     {% for obj in objs %}
-
     <div class="col s12 m6">
       <div class="card yellow darken-3">
         <div class="card-content white-text">
@@ -52,8 +54,6 @@
 
   </div>
 
-
-</ol>
 
 <script type="text/javascript" src="{% static 'order.js' %}" ></script>
 {% endblock %}

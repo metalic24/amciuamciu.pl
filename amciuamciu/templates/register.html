@@ -2,7 +2,7 @@
 
 {%block content%}
 
-<form method="post">{% csrf_token %}
+{% comment %} <form method="post">{% csrf_token %}
 
     {{ form.username.label }}
     {{form.username}}
@@ -19,5 +19,41 @@
    <input type="submit" value="rejestracja ">
 
 
-   {{form.errors}}
+   {{form.errors}} {% endcomment %}
+
+
+   <div class="row">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          {{form.username}}
+          <label>{{form.username.label}}</label>
+        </div>
+        <div class="input-field col s6">
+          {{form.email}}
+          <label>{{form.email.label}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          {{form.password1}}
+          <label>{{form.password1.label}}</label>
+          <span class="helper-text" data-error="wrong" data-success="right">at least 8 characters</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          {{form.password2}}
+          <label>{{form.password2.label}}</label>
+        </div>
+      </div>
+      <div class="waves-effect waves-light btn">
+        <input type="submit" value="Rejestracja">
+    </div>
+    </form>
+    {{form.errors}}
+  </div>
+
+
 {% endblock %}

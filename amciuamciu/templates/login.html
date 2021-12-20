@@ -2,7 +2,7 @@
 
 {%block content%}
 
-<form method="post">{% csrf_token %}
+{% comment %} <form method="post">{% csrf_token %}
 
     <input type="text" name="username"/>
     <input type="password" name="password"/>
@@ -11,7 +11,27 @@
 
 {% for message in messages%}
 <p id="">{{message}}</p>
-{% endfor %}
+{% endfor %} {% endcomment %}
+
+
+<div class="row">
+    <form class="col s12" method="post">{% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Username" name="username" type="text">
+        </div>
+        <div class="input-field col">
+          <input placeholder="Password" name="password" type="password">
+        </div>
+      </div>
+      <div class="waves-effect waves-light btn">
+          <input type="submit" value="logowanie">
+      </div>
+    </form>
+    {% for message in messages%}
+        <p id="">{{message}}</p>
+    {% endfor %}
+  </div>
 
 
   
