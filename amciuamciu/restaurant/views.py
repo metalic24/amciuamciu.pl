@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import restaurant
 from .forms import Create_restaurant
@@ -44,6 +45,6 @@ def delete_restaurant(request,id):
             obj.delete()
         context={"objs" : obj}
     else:
-         return  render(request,"restaurant",{})
+        return render(request, "restaurant/nope.html",{})
 
     return render(request,"restaurant/delete_restaurant.html",context)

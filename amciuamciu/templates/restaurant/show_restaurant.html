@@ -25,13 +25,18 @@
 
     <div class="col s12 m6">
       <div class="card yellow darken-3">
+          <div class="card-image">
+            <img src="{{obj.img_path.url}}">
+            <span class="card-title black">{{obj.name}}</span>
+          </div>
         <div class="card-content white-text">
-          <span class="card-title"><a href='../menu/{{obj.id}}'>{{obj.name}}</a></span>
           <p>Wlasciciel: {{obj.owner}}</p>
           <p>Typ kuchni: {{obj.kitchen_type}}</p>
         </div>
         <div class="card-action yellow lighten-3">
-          <a href="../menu/{{obj.id}}">Zamow</a>
+            <a href="../menu/{{obj.id}}">Zamow</a>
+            <a href="../restaurant/{{obj.id}}/delete">Usun</a>
+
         </div>
       </div>
     </div>
