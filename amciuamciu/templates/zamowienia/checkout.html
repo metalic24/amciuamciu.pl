@@ -7,11 +7,14 @@
 
 {% load static %}
 
+{% csrf_token %}
+
+<div class="products">
 
 
-<div class="products"></div>
-
-
+</div>
+<button type="submit" class="btn-success" onclick="order()">Submit</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'scripts/checkout.js' %}" ></script>
 {% endblock %}
 

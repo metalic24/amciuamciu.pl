@@ -40,6 +40,26 @@ function display_cart()
     
 }
 
+function order()
+{
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    $.ajax({
+        url: '/zamowienia/checkout/',
+        type: "POST",
+        data: {test:'cos'},
+        headers:{
+            "X-CSRFToken": csrftoken
+        },
+            
+        
+        success: function(data){
+            console.log("ajax dziala");
+         
+        }
+    });
+}
+
+
 display_cart();
 
 onLoadCartNumbers();
