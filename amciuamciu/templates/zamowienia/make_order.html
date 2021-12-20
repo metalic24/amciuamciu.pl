@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+
+
+{%block content%}
+
+{% load static %}
+
+<form method="POST" >{% csrf_token %}
+    {{form.as_table}}
+<input type="submit" class="btn-success" onclick="order()"/>
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'scripts/make_order.js' %}" ></script>
+{% endblock %}
+

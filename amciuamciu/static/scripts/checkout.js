@@ -40,26 +40,6 @@ function display_cart()
     
 }
 
-function order()
-{
-    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-    var orderData ={}
-    orderData['test'] = "test dziala"
-    $.ajax({
-        url: '/zamowienia/checkout/',
-        type: "POST",
-        data: orderData,
-        headers:{
-            "X-CSRFToken": csrftoken
-        },
-            
-        
-        success: function(data){
-            console.log("ajax dziala");
-         
-        }
-    });
-}
 
 
 display_cart();
