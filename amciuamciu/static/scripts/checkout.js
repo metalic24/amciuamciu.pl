@@ -43,10 +43,12 @@ function display_cart()
 function order()
 {
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    var orderData ={}
+    orderData['test'] = "test dziala"
     $.ajax({
         url: '/zamowienia/checkout/',
         type: "POST",
-        data: {test:'cos'},
+        data: orderData,
         headers:{
             "X-CSRFToken": csrftoken
         },

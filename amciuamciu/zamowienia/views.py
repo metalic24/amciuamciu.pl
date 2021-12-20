@@ -16,9 +16,8 @@ def cart(request):
 
 def checkout(request):
 	
-	
-	
-	print(request.POST.get)
+	if request.method == 'POST':
+		print(request.POST.get('test',''))
 
 	context = {}
 	return render(request, 'zamowienia/checkout.html', context)
