@@ -33,6 +33,24 @@ def make_order(request):
 
 	form = MakeOrder(request.POST)
 	user = User.objects.get(username=request.user.username)
+	products = dict()
+	
+	
+	
+	if request.method == 'POST':
+			if request.POST.get('objects') != None:
+				prducts_str = str(request.POST.get('objects'))
+				products = json.loads(prducts_str)
+		
+			
+			
+				
+ 
+			
+			
+	
+
+
 
 	if form.is_valid() and request.method == 'POST':
 		
@@ -41,6 +59,7 @@ def make_order(request):
 		instance.bill = 0
 		form.save()
 
+		
 		
     	
 
