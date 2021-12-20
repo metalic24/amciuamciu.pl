@@ -29,6 +29,6 @@ def show_menu(request, rest_id):
     objs = menu.objects.filter(restaurant_id = rest_id)
 
     context = {
-        'objs':objs
+        'objs':objs,
     }
     return render(request,"menu/show_menu.html",context)

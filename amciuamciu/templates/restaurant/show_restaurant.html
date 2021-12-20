@@ -3,7 +3,7 @@
 {%block content%}
 {{request.user.name}}
 
-{% for obj in objs %}
+{% comment %} {% for obj in objs %}
 <a href='../menu/{{obj.id}}'>
 <h1>{{obj.name}}</h1>
 <li>
@@ -17,9 +17,28 @@
 </a>
 <a href='../zamowienia/{{request.user.id}}/{{obj.id}}/create'>Zamow</a>
 
-{% endfor %}
+{% endfor %} {% endcomment %}
+
+<div class="row">
+    {% for obj in objs %}
 
 
+    <div class="col s12 m6">
+      <div class="card yellow darken-3">
+        <div class="card-content white-text">
+          <span class="card-title"><a href='../menu/{{obj.id}}'>{{obj.name}}</a></span>
+          <p>Wlasciciel: {{obj.owner}}</p>
+          <p>Typ kuchni: {{obj.kitchen_type}}</p>
+        </div>
+        <div class="card-action yellow lighten-3">
+          <a href="../menu/{{obj.id}}">Zamow</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
 
   
 {% endblock %}

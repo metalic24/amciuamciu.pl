@@ -10,7 +10,7 @@
 <ol>
 
 
-{% for obj in objs %}
+{% comment %} {% for obj in objs %}
 <li>
 <h1>{{obj.name}}</h1>
 <ul>
@@ -28,7 +28,30 @@
     
 </ul>
 </li>
-{% endfor %}
+{% endfor %} {% endcomment %}
+
+
+<div class="row">
+
+    {% for obj in objs %}
+
+    <div class="col s12 m6">
+      <div class="card yellow darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">{{obj.name}}</span>
+          <p>{{obj.description}}</p>
+          <p>Cena: {{obj.price}} PLN</p>
+        </div>
+        <div class="card-action yellow lighten-3">
+            <a   class="add-to-cart btn btn-primary" href="#" > Dodaj do zamówienia</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
 
 </ol>
 
