@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from restaurant.views import show_restaurants
@@ -28,7 +29,7 @@ def checkout(request):
 
 	context = {}
 	return render(request, 'zamowienia/checkout.html', context)
-
+@login_required(login_url='/users_amciu/login/')
 def make_order(request):
 
 	form = MakeOrder(request.POST)
