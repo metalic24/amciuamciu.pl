@@ -16,8 +16,8 @@
 <h1>{{obj.name}}</h1>
 <ul>
     <li style="display: none;" ><obj class="obj">{{obj}}</obj></li>
-    <li style="display: none;" ><obj class="id">{{obj.id}}</obj></li>
-    <li ><obj class="rest_id">{{obj.restaurant_id}}</obj></li>
+    <li style="display: none;" ></li>
+    <li ></li>
     <li style="display: none;">{{obj.owner_id}}</li>
     <li class="name">{{obj.name}}</li>
     <li>{{obj.description}}</li>
@@ -40,9 +40,12 @@
     <div class="col s12 m6">
       <div class="card yellow darken-3">
         <div class="card-content white-text">
-          <span class="card-title">{{obj.name}}</span>
+          <span class="card-title name ">{{obj.name}}</span>
+          <p style="display: none;"><obj class="obj">{{obj}}</obj></p>
+          <p style="display: none;"><obj class="id">{{obj.id}}</obj></p>
+          <p style="display: none;"><obj class="rest_id">{{obj.restaurant_id}}</obj></p>
           <p>{{obj.description}}</p>
-          <p>Cena: {{obj.price}} PLN</p>
+          <p>Cena:<obj class="price">{{obj.price}} </obj> PLN</p>
         </div>
         <div class="card-action yellow lighten-3">
             <a   class="add-to-cart btn btn-primary" href="#" > Dodaj do zamówienia</a>

@@ -7,7 +7,7 @@ let dishes_names = document.querySelectorAll('.name');
 let prices= document.querySelectorAll('.price');
 products_list=[];
 
-
+console.log(menu_ids[1].innerHTML)
 for(var i=0; i<products.length; i++)
 {
     
@@ -83,7 +83,7 @@ function setIncart(product)
 {
     let cartItem = localStorage.getItem("productInCart");
     cartItem = JSON.parse(cartItem);
-
+    console.log(product)
     if(cartItem != null)
     {
         if(cartItem[product.id] ==undefined)
@@ -96,7 +96,7 @@ function setIncart(product)
         cartItem[product.id].in_cart +=1;
     }
     else
-    {
+    {   
         product.in_cart = 1;
         cartItem={
             [product.id]: product

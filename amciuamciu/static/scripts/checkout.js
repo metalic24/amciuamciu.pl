@@ -1,14 +1,4 @@
-function onLoadCartNumbers()
-{
-    
-    let productNo = localStorage.getItem('cartNumbers');
-    productNo = parseInt(productNo);
-    if(productNo)
-    {
-       
-        document.querySelector('#cart-no').textContent = productNo;
-    }
-}
+
 function display_cart()
 {
     let cartItems = localStorage.getItem("productInCart");
@@ -44,5 +34,5 @@ function display_cart()
 
 display_cart();
 
-onLoadCartNumbers();
+
 
