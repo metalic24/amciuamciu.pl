@@ -40,6 +40,8 @@ function display_cart()
     
 }
 
+
+
 display_cart();
 
 onLoadCartNumbers();
