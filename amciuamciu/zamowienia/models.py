@@ -26,7 +26,7 @@ class Order(models.Model):
 class Ordered_Items(models.Model):
     order = ForeignKey(Order, on_delete=CASCADE)
     menu_id = IntegerField()
-    neme = CharField(max_length=150)
+    name = CharField(max_length=150)
     price = DecimalField(max_digits=5, decimal_places=2)
     total_number = IntegerField()
 

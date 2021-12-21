@@ -56,7 +56,7 @@ def make_order(request):
 		
 		for item in products.keys():
 			order_item = Ordered_Items(order = order, menu_id= products[item]['id'],
-			neme= products[item]['name'], price = products[item]['price'], total_number = products[item]['in_cart']	
+			name= products[item]['name'], price = products[item]['price'], total_number = products[item]['in_cart']	
 			)
 			order_item.save()
 
