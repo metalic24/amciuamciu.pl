@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
-
+{% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{% endblock %}
 
 
 {%block content%}
@@ -16,5 +19,6 @@
 <a type="submit" class="btn-success" href="/zamowienia/make_order">Zamów</a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'scripts/checkout.js' %}" ></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/order_chech.css' %}"/>
 {% endblock %}
 

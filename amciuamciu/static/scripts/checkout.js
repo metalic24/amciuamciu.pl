@@ -17,10 +17,10 @@ function display_cart()
 
     if(cartItems)
     {
-        product_disp.innerHTML =`<div class="products_div">`;
+        product_disp.innerHTML =''
         Object.values(cartItems).map(item=>{
 
-            product_disp.innerHTML += `<div class="product">
+            product_disp.innerHTML += `<div class="product col-md-12">
             <p>${item.name}</p>
             <p>${item.price} PLN</p>
             <p>${item.in_cart}</p>
@@ -30,7 +30,7 @@ function display_cart()
             
 
         })
-        product_disp.innerHTML+=`<div>`;
+        
     }
     
    
