@@ -4,8 +4,12 @@ body{
 
 p#cart-no{
 
-    background-color: red;
-    color: white;
+  background: red;
+  font:white;
+  clip-path: circle(50%);
+  text-align: center;
+  
+   
 }
 
 .product_row{
