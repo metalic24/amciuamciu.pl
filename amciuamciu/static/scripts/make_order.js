@@ -25,6 +25,7 @@ function order()
            
            success: function(data)
            {
+             localStorage.clear();
              
            }
          });
