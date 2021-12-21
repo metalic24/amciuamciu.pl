@@ -12,12 +12,12 @@ function display_cart()
         Object.values(cartItems).map(item=>{
 
             product_disp.innerHTML += `<tr class="product_row">
-            <td><ion-icon name="close-circle-outline" ></ion-icon>${item.name}</td>
+            <td>${item.name}</td>
             <td>${item.price} PLN</td>
             <td><ion-icon name="arrow-back-circle-outline"></ion-icon>
             ${item.in_cart}<ion-icon name="arrow-forward-circle-outline"></ion-icon></td>
             <td>${item.price * item.in_cart} PLN</td>
-            
+            <td><ion-icon name="close-circle-outline"></ion-icon><td>
             </tr>
             `
             
@@ -40,13 +40,9 @@ function disp_total()
     let cost_disp = document.getElementById('totalCost')
     
 
+    console.log(cost_disp);
+
     cost_disp.innerHTML = `<div>W sumie: ${totalCost}</div>`;
-
-}
-
-function delete_item(item)
-{
-    console.log(item);
 
 }
 
