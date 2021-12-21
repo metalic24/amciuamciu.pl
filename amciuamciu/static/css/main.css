@@ -7,3 +7,13 @@ p#cart-no{
     background-color: red;
     color: white;
 }
+
+.product_row{
+    margin: 5px;
+}
+.zamow{
+    border: 5px solid #FFFF00;
+    display: flex;
+    justify-content: center;
+    background-color: orange;
+}
