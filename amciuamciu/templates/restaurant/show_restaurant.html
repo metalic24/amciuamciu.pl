@@ -29,15 +29,14 @@
             <img src="{{obj.img_path.url}}">
             <span class="card-title black">{{obj.name}}</span>
           </div>
-        <div class="card-content white-text">
-          <p>Wlasciciel: {{obj.owner}}</p>
+        <div class="card-content black-text">
+          <p>Właściciel: {{obj.owner}}</p>
           <p>Typ kuchni: {{obj.kitchen_type}}</p>
         </div>
         <div class="card-action yellow lighten-3">
-            <a href="../menu/{{obj.id}}">Zamow</a>
-            <a href="../menu/{{obj.id}}/create">Dodaj do menu</a>
-            <a href="../restaurant/{{obj.id}}/delete">Usun</a>
-
+            <a class="black-text" href="../menu/{{obj.id}}">Zamów</a>
+            <a class="black-text" href="../menu/{{obj.id}}/create">Dodaj do menu</a>
+            <a class="black-text" href="../{{obj.id}}/delete">Usuń</a>
         </div>
       </div>
     </div>
@@ -46,5 +45,4 @@
 
   </div>
 
-  
 {% endblock %}
