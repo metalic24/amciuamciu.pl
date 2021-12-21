@@ -7,15 +7,15 @@ function display_cart()
 
     if(cartItems)
     {
-        product_disp.innerHTML =''
+        product_disp.innerHTML ='<tr><th>Nazwa</h><th>cena</th><th>ilosc</th><th>w sumie</th></tr>'
         Object.values(cartItems).map(item=>{
 
-            product_disp.innerHTML += `<div class="product col-md-12">
-            <p>${item.name}</p>
-            <p>${item.price} PLN</p>
-            <p>${item.in_cart}</p>
-            <p>${item.price * item.in_cart} PLN</p>
-            </div>
+            product_disp.innerHTML += `<tr class="product_row">
+            <td>${item.name}</td>
+            <td>${item.price} PLN</td>
+            <td>${item.in_cart}</td>
+            <td>${item.price * item.in_cart} PLN</td>
+            </td>
             `
             
 
