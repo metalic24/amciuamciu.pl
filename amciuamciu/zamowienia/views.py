@@ -5,7 +5,7 @@ from restaurant.views import show_restaurants
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 
-from zamowienia.models import Ordered_Items
+from zamowienia.models import Ordered_Items, Order
 from .forms import MakeOrder
 import json
 
@@ -33,57 +33,36 @@ def make_order(request):
 
 	form = MakeOrder(request.POST)
 	user = User.objects.get(username=request.user.username)
-	items =[]
-	print(request.POST)
+	
+#	print("POST: ",request.POST)
+	
 	if request.method == 'POST':
-			
-			if request.POST.get('objects') != None:
-				products_str = request.POST.get('objects')
-				products = json.loads(products_str)
-				for key in products.keys():
-					dic={}
-					
-					for key2 in products[key].keys():
-						dic[key2] = products[key][key2]
-						
-					items.append(dic)
-	
-
-
-
-	if form.is_valid() and request.method == 'POST':
+		form_dic = {}	
+		products_str = str(request.POST.get('objects'))
+		products =json.loads(products_str)
+		form_data = request.POST.get('form')
+		form_data = json.loads(form_data)
+		for form_d in form_data:
+			form_dic[form_d['name']] = form_d['value']
 		
-	
-		instance = form.save(commit=False)
-		instance.customer = user
-		instance.bill = 0
-		order =	form.save()
+		order = Order(customer = request.user, bill=0, street=form_dic['street'],
+		building_number= form_dic['building_number'], local_number=form_dic['local_number'],
+		city = form_dic['city'], pass_code=form_dic['pass_code'], 
+		paid=False)
+		order.save()
+	#	for item in products.keys():
+	#		print(products[item]['name'])
+
 		
-			
-		
-		for item in items:
-			ordered_item= Ordered_Items(
-				order = order,
-				menu_id = item['id'],
-				name = item['name'],
-				price = item['price'],
-				total_number = item['in_cart']
-				
+		for item in products.keys():
+			order_item = Ordered_Items(order = order, menu_id= products[item]['id'],
+			neme= products[item]['name'], price = products[item]['price'], total_number = products[item]['in_cart']	
 			)
-			print(item)
-			
-			ordered_item.save()
+			order_item.save()
 
 
-		
-
-		
-			
 	
-	
-	
-
-		
+					
 		
     	
 

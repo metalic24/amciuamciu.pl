@@ -1,26 +1,46 @@
 function order()
 {
-    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+   
+   
+   
+
+
+   
     var orderData ={};
-    orderData['objects'] =localStorage.getItem('productInCart');
+    csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+    orderData['csrfmiddlewaretoken'] = csrf_token;
+    orderData['objects'] = localStorage.getItem('productInCart');
+    
+    var form = $("#idForm");
+   
+  //  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    orderData['form']= JSON.stringify( $(form).serializeArray() );
+    
+    var url = "/zamowienia/make_order/"
+    
     $.ajax({
-        url: '/zamowienia/make_order/',
-        type: "POST",
-        data: orderData,
-       // contentType: "application/json; charset=utf-8",
-        //dataType: "json",
-        headers:{
-            "X-CSRFToken": csrftoken
-        },
-        
-            
-        
-        success: function(data){
-            console.log("ajax dziala");
-            console.log(typeof orderData['objects'])
-         
-        }
-    });
+           type: "POST",
+           url: url,
+           data: orderData, // serializes the form's elements.
+           
+           success: function(data)
+           {
+             
+           }
+         });
+
+    
+
 }
 
 
+function getFormData($form){
+    var unindexed_array = $form;
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
