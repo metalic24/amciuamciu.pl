@@ -7,7 +7,8 @@ let dishes_names = document.querySelectorAll('.name');
 let prices= document.querySelectorAll('.price');
 products_list=[];
 
-console.log(menu_ids[1].innerHTML)
+
+
 for(var i=0; i<products.length; i++)
 {
     
@@ -36,8 +37,12 @@ for(let i=0; i<carts.length; i++)
     
     carts[i].addEventListener('click',()=>{
 
-        cartNumber(products_list[i]);
-        totalCost(products_list[i]);
+        if(check_rest(products_list[i]))
+        {
+            cartNumber(products_list[i]);
+            totalCost(products_list[i]);
+        }
+       
         
       
     })
@@ -50,7 +55,8 @@ for(let i=0; i<carts.length; i++)
 function cartNumber(product)
 {
    
-    console.log(product);
+   
+
     let productNo = localStorage.getItem('cartNumbers');
     productNo = parseInt(productNo);
     if(productNo)
@@ -83,7 +89,7 @@ function setIncart(product)
 {
     let cartItem = localStorage.getItem("productInCart");
     cartItem = JSON.parse(cartItem);
-    console.log(product)
+    
     if(cartItem != null)
     {
         if(cartItem[product.id] ==undefined)
@@ -110,7 +116,7 @@ function setIncart(product)
 function totalCost(product)
 {
     let cartCost = localStorage.getItem('totalCost');
-    console.log(product.price);
+    
     
 
     if(cartCost != null)
@@ -122,6 +128,25 @@ function totalCost(product)
     else
     {
         localStorage.setItem("totalCost", product.price);
+    }
+}
+function check_rest(product)
+{
+    let rest_id = localStorage.getItem('rest_id');
+    
+    pr_rest_id = parseInt(product.rest_id);
+    console.log(rest_id);
+    console.log(pr_rest_id);
+    
+    if(rest_id !=pr_rest_id && rest_id != null )
+    {
+      alert("Możesz zamówić tylko z jednej restauracji na raz!");
+      return false;
+    }
+    else
+    {
+        localStorage.setItem("rest_id", pr_rest_id);
+        return true;
     }
 }
 
