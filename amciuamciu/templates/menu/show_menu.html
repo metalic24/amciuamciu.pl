@@ -39,11 +39,12 @@
     {% for obj in objs %}
     <div class="col s12 m6">
       <div class="card large yellow darken-3">
-        <div class='card-image'>
-          <img src="{{obj.img_path.url}}">
-          <span class="card-title black ">{{obj.name}}</span>
+        <div class="card-image">
+          <img src={{obj.img_path.url}}>
+          <span class="card-title black name">{{obj.name}}</span>
         </div>
         <div class="card-content black-text">
+          
           <p style="display: none;"><obj class="obj">{{obj}}</obj></p>
           <p style="display: none;"><obj class="id">{{obj.id}}</obj></p>
           <p style="display: none;"><obj class="rest_id">{{obj.restaurant_id}}</obj></p>
