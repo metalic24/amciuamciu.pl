@@ -13,6 +13,7 @@ class menu(models.Model):
     restaurant = ForeignKey(rest, on_delete=CASCADE, null=False)
     price = DecimalField(max_digits=20, decimal_places=2, null=False)
     description = TextField(null=True)
+    img_path = models.ImageField(upload_to='images/')
 
 
 

@@ -3,15 +3,49 @@
 
 {%block content%}
 {{request.user.name}}
-<form method="post" >{% csrf_token %}
 
-    {{form.as_p}}
-  
-<input type="submit" value="stwórz ">
 
-{% for message in messages%}
-<p id="">{{message}}</p>
-{% endfor %}
+{% comment %} <div class='row'>
+
+    <form method="post" enctype="multipart/form-data" >{% csrf_token %}
+        <form class='col s12'>
+            <div class='row'>
+                <div class="input-field col s6">
+                    {{form.as_p}}
+                </div>
+            </div>
+            <div class='waves-effect waves-light btn'>
+                <input type="submit" value="stwórz ">
+            </div>
+        </form>
+
+        {% for message in messages%}
+        <p id="">{{message}}</p>
+        {% endfor %}
+    </form>
+</div> {% endcomment %}
+
+<div class="w3-container w3-teal">
+    <h2>Dodawanie do menu</h2>
+  </div>
+
+  <form class="w3-container w3-half" method="post" enctype="multipart/form-data">{% csrf_token%}
+    <div class="w3-input w3-border w3-white">
+      <label class="w3-text-black"><b>{{form.name.label}}</b></label>
+      {{form.name}}
+      <label class="w3-text-black"><b>{{form.description.label}}</b></label>
+      {{form.description}}
+      <label class="w3-text-black"><b>{{form.price.label}}</b></label>
+      {{form.price}}
+      <label class="w3-text-black"><b>{{form.img_path.label}}</b></label>
+      {{form.img_path}}
+      <br><br>
+      <button class="w3-btn w3-teal" type="submit">Stwórz</button>
+    </div>
+  </form>
+  {% for message in messages%}
+    <p id="">{{message}}</p>
+  {% endfor %}
 
 
   

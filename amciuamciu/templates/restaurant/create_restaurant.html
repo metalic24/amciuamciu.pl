@@ -15,25 +15,34 @@
 {% endfor %} {% endcomment %}
 
 
-
-<div class="row">
-
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-            {{form.as_p}}
-        </div>
-      </div>
-      <div class="waves-effect waves-light btn">
-        <input type="submit" value="Zaloz restauracje">
-    </div>
-    </form>
-    {% for message in messages%}
-    <p id="">{{message}}</p>
-    {% endfor %}
-
+  <div class="w3-container w3-teal">
+    <h2>Zakładanie restauracji</h2>
   </div>
+
+  <form class="w3-container w3-half" method="post" enctype="multipart/form-data">{% csrf_token%}
+    <div class="w3-input w3-border w3-white">
+      <label class="w3-text-black"><b>{{form.name.label}}</b></label>
+      {{form.name}}
+      <label class="w3-text-black"><b>{{form.kitchen_type.label}}</b></label>
+      {{form.kitchen_type}}
+      <label class="w3-text-black"><b>{{form.img_path.label}}</b></label>
+      {{form.img_path}}
+      <br>
+      <label class="w3-text-black"><b>{{form.street.label}}</b></label>
+      {{form.street}}
+      <label class="w3-text-black"><b>{{form.local_number.label}}</b></label>
+      {{form.local_number}}
+      <label class="w3-text-black"><b>{{form.city.label}}</b></label>
+      {{form.city}}
+      <label class="w3-text-black"><b>{{form.pass_code.label}}</b></label>
+      {{form.pass_code}}
+      <button class="w3-btn w3-teal" type="submit">Załóż restaurację</button>
+    </div>
+  </form>
+  {% for message in messages%}
+    <p id="">{{message}}</p>
+  {% endfor %}
+
 
   
 {% endblock %}

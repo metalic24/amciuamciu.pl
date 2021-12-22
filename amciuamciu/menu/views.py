@@ -7,7 +7,7 @@ from restaurant.models import restaurant as rest
 
 @login_required(login_url='/users_amciu/login/')
 def create_menu(request,rest_id):
-    form = Create_menu(request.POST)
+    form = Create_menu(request.POST, request.FILES)
     restaurant = rest.objects.get(id = rest_id)
     if request.user.id == restaurant.owner.id:
         

@@ -11,6 +11,7 @@ class Create_menu(forms.ModelForm):
             'name',
             'description',
             'price',
+            'img_path',
             
         ]
        
