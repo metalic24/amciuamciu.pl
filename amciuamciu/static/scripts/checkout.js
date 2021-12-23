@@ -14,11 +14,11 @@ function display_cart()
             product_disp.innerHTML += `<tr class="product_row">
             <td><button onclick="delete_item(${i})"><ion-icon name="close-circle-outline" ></ion-icon></button>${item.name}</td>
             <td>${item.price} PLN</td>
-            <td><ion-icon name="arrow-back-circle-outline"></ion-icon>
-            ${item.in_cart}<ion-icon name="arrow-forward-circle-outline"></ion-icon></td>
-            <td>${item.price * item.in_cart} PLN</td>
+            <td><button onclick="minus_item(${i})"><ion-icon name="arrow-back-circle-outline"></ion-icon></button>
+            ${item.in_cart}<button onclick="add_item(${i})"><ion-icon name="arrow-forward-circle-outline"></ion-icon></button></td>
+            <td><obj id="total_${i}"> ${item.price * item.in_cart}</obj> PLN</td>
             
-            </tr>
+            </tr><
             `;
             i++;
 
@@ -40,7 +40,7 @@ function disp_total()
     let cost_disp = document.getElementById('totalCost')
     
 
-    cost_disp.innerHTML = `<div>W sumie: ${totalCost}</div>`;
+    cost_disp.innerHTML= `<div>W sumie: ${totalCost}</div>`;
 
 }
 
@@ -70,7 +70,47 @@ function delete_all()
     localStorage.clear();
     window.location.reload();
 }
+function add_item(id)
+{
+    var items = JSON.parse( localStorage.getItem("productInCart"));
+    var total = parseFloat(localStorage.getItem("totalCost"));
+    var in_cart = parseInt( localStorage.getItem("cartNumbers"));
+    total += parseFloat(items[id].price);
+    total.toFixed(2);
+    in_cart++;
+    items[id].in_cart++;
+    localStorage.setItem("productInCart",JSON.stringify(items));
+    localStorage.setItem("totalCost",total);
 
+    localStorage.setItem("cartNumbers",in_cart);
+   
+    display_cart();
+    onLoadCartNumbers();
+
+
+}
+function minus_item(id)
+{
+    
+    var items = JSON.parse( localStorage.getItem("productInCart"));
+    var total = parseFloat(localStorage.getItem("totalCost"));
+    var in_cart = parseInt( localStorage.getItem("cartNumbers"));
+    if(items[id].in_cart >1 )
+    {
+        total-= parseFloat(items[id].price);
+        total.toFixed(2);
+        in_cart--;
+        items[id].in_cart--;
+        localStorage.setItem("productInCart",JSON.stringify(items));
+        localStorage.setItem("totalCost",total);
+    
+        localStorage.setItem("cartNumbers",in_cart);
+        display_cart();
+        onLoadCartNumbers();
+    }
+   
+
+}
 
 
 display_cart();
