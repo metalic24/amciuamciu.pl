@@ -34,10 +34,10 @@
 {% endcomment %}
 
 
-<div class="row">
+<ul class="list-group">
 
     {% for obj in objs %}
-    <div class="col s12 m6">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
       <div class="card large yellow darken-3">
         <div class="card-image">
           <img src={{obj.img_path.url}}>
@@ -55,11 +55,11 @@
             <a   class="add-to-cart btn btn-primary black-text" href="#" > Dodaj do zamówienia</a>
         </div>
       </div>
-    </div>
+    </li>
 
     {% endfor %}
 
-  </div>
+  </ul>
 
 
 <script type="text/javascript" src="{% static 'order.js' %}" ></script>

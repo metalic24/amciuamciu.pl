@@ -19,11 +19,12 @@
 
 {% endfor %} {% endcomment %}
 
-<div class="row">
+<div class="row" >
+
     {% for obj in objs %}
 
 
-    <div class="col s12 m6">
+    <div class="col-md-4 col-sm-6 col-lg-4">
       <div class="card large yellow darken-3">
           <div class="card-image">
             <img src="{{obj.img_path.url}}">
