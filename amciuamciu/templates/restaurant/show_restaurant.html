@@ -23,7 +23,7 @@
 
     {% for obj in objs %}
 
-
+  <a href="../menu/{{obj.id}}">
     <div class="col-md-4 col-sm-6 col-lg-4">
       <div class="card large yellow darken-3">
           <div class="card-image">
@@ -35,12 +35,13 @@
           <p>Typ kuchni: {{obj.kitchen_type}}</p>
         </div>
         <div class="card-action yellow lighten-3">
-            <a class="black-text" href="../menu/{{obj.id}}">Zamów</a>
+           
             <a class="black-text" href="../menu/{{obj.id}}/create">Dodaj do menu</a>
             <a class="black-text" href="../{{obj.id}}/delete">Usuń</a>
         </div>
       </div>
     </div>
+  </a>
 
     {% endfor %}
 
