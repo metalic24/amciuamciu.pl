@@ -54,10 +54,21 @@ function delete_item(item_id)
     delete items[item_id];
     localStorage.setItem("productInCart",JSON.stringify(items));
     localStorage.setItem("totalCost",total);
+
     localStorage.setItem("cartNumbers",in_cart);
+
+    if(in_cart==0)
+    {
+        localStorage.removeItem("rest_id")
+    }
     display_cart();
     
     
+}
+function delete_all()
+{
+    localStorage.clear();
+    window.location.reload();
 }
 
 
