@@ -16,7 +16,7 @@ function display_cart()
             <td>${item.price} PLN</td>
             <td><button onclick="minus_item(${i})"><ion-icon name="arrow-back-circle-outline"></ion-icon></button>
             ${item.in_cart}<button onclick="add_item(${i})"><ion-icon name="arrow-forward-circle-outline"></ion-icon></button></td>
-            <td><obj id="total_${i}"> ${item.price * item.in_cart}</obj> PLN</td>
+            <td><obj id="total_${i}"> ${(item.price * item.in_cart).toPrecision(3)}</obj> PLN</td>
             
             </tr><
             `;
@@ -39,7 +39,8 @@ function disp_total()
     let totalCost = localStorage.getItem("totalCost");
     let cost_disp = document.getElementById('totalCost')
     
-
+    totalCost = parseFloat(totalCost);
+    totalCost.toPrecision(3);
     cost_disp.innerHTML= `<div>W sumie: ${totalCost}</div>`;
 
 }
@@ -62,6 +63,7 @@ function delete_item(item_id)
         localStorage.removeItem("rest_id")
     }
     display_cart();
+    disp_total();
     
     
 }
@@ -76,7 +78,7 @@ function add_item(id)
     var total = parseFloat(localStorage.getItem("totalCost"));
     var in_cart = parseInt( localStorage.getItem("cartNumbers"));
     total += parseFloat(items[id].price);
-    total.toFixed(2);
+    total.toPrecision(3);
     in_cart++;
     items[id].in_cart++;
     localStorage.setItem("productInCart",JSON.stringify(items));
@@ -98,7 +100,7 @@ function minus_item(id)
     if(items[id].in_cart >1 )
     {
         total-= parseFloat(items[id].price);
-        total.toFixed(2);
+        total.toPrecision(3);
         in_cart--;
         items[id].in_cart--;
         localStorage.setItem("productInCart",JSON.stringify(items));

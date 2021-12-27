@@ -19,12 +19,13 @@
 
 {% endfor %} {% endcomment %}
 
-<div class="row" >
+<div class="row">
 
     {% for obj in objs %}
 
-  <a href="../menu/{{obj.id}}">
-    <div class="col-md-4 col-sm-6 col-lg-4">
+ 
+    <div class="col-md-4">
+      <a href="../menu/{{obj.id}}">
       <div class="card large yellow darken-3">
           <div class="card-image">
             <img src="{{obj.img_path.url}}">
@@ -40,8 +41,9 @@
             <a class="black-text" href="../{{obj.id}}/delete">Usuń</a>
         </div>
       </div>
+    </a>
     </div>
-  </a>
+
 
     {% endfor %}
 
