@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from amciuamciu.settings import EMAIL_HOST_USER
 from restaurant.views import show_restaurants
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
@@ -9,6 +10,7 @@ from django.http import JsonResponse, HttpResponse
 from zamowienia.models import Ordered_Items, Order
 from .forms import MakeOrder
 import json
+from django.core.mail import send_mail
 
 
 
@@ -29,6 +31,8 @@ def checkout(request):
 
 	context = {}
 	return render(request, 'zamowienia/checkout.html', context)
+
+
 @login_required(login_url='/users_amciu/login/')
 def make_order(request):
 
@@ -43,6 +47,7 @@ def make_order(request):
 		products =json.loads(products_str)
 		form_data = request.POST.get('form')
 		form_data = json.loads(form_data)
+
 		for form_d in form_data:
 			form_dic[form_d['name']] = form_d['value']
 		
@@ -55,15 +60,18 @@ def make_order(request):
 	#		print(products[item]['name'])
 
 		
+		
 		for item in products.keys():
 			order_item = Ordered_Items(order = order, menu_id= products[item]['id'],
 			name= products[item]['name'], price = products[item]['price'], total_number = products[item]['in_cart']	
 			)
 			order_item.save()
 
-
-	
-					
+		subject = 'Dziękujemy za zamówienie :D'
+		message = 'Po dodkonaniu zapłaty Twoje zamówienie ruszy w drogę :D '
+		recepient = request.user.email
+		send_mail(subject, 
+            message, EMAIL_HOST_USER, [recepient], fail_silently = False)
 		
     	
 
