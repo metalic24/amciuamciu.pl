@@ -70,6 +70,7 @@ def make_order(request):
 		subject = 'Dziękujemy za zamówienie :D'
 		message = 'Po dodkonaniu zapłaty Twoje zamówienie ruszy w drogę :D '
 		recepient = request.user.email
+		print(recepient)
 		send_mail(subject, 
             message, EMAIL_HOST_USER, [recepient], fail_silently = False)
 		
