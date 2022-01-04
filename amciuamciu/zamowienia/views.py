@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 from users_amciu.views import hello_login
 
+
 from zamowienia.models import Ordered_Items, Order
 from .forms import MakeOrder
 import json
@@ -51,6 +52,8 @@ def make_order(request):
 		products =json.loads(products_str)
 		form_data = request.POST.get('form')
 		form_data = json.loads(form_data)
+		restaurant = rest.objects.get(pk = request.POST.get('rest_id'))
+
 
 		for form_d in form_data:
 			form_dic[form_d['name']] = form_d['value']
@@ -58,7 +61,7 @@ def make_order(request):
 		order = Order(customer = request.user, bill=request.POST.get('bill'), street=form_dic['street'],
 		building_number= form_dic['building_number'], local_number=form_dic['local_number'],
 		city = form_dic['city'], pass_code=form_dic['pass_code'], 
-		paid=False)
+		paid=False, rest= restaurant)
 		order.save()
 	#	for item in products.keys():
 	#		print(products[item]['name'])

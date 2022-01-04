@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+
+{% load static %}
+
+<h1>Twoje zamówienia 222</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">paid</th>
+      <th scope="col"> bill</th>
+      <th scope="col">Status</th>
+      <th scope="col">szczegóły</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for order in orders %}
+
+<tr>
+  <th scope="row">{{order.id}}</th>
+  <td>{{order.paid}}</td>
+  <td>{{order.bill}}</td>
+  <td>{{order.status}}</td>
+  <td><a class="btn btn-success" href = "{% url 'restaurant-orders-details' id=order.id %}">> Szczegóły </a></td>
+</tr>
+
+
+{% endfor %}
+
+
+   
+  </tbody>
+</table>
+
+
+{% endblock content %}

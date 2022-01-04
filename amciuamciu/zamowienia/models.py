@@ -31,6 +31,8 @@ class Order(models.Model):
     pass_code = IntegerField(null=False)
     paid = BooleanField(default=False)
     status = CharField(max_length=20, choices=CHOISES , default='przyjete')
+    rest = ForeignKey(rest, on_delete=CASCADE)
+    date = models.DateField(auto_now_add=True)
 
     #todo
     #status zamówienia

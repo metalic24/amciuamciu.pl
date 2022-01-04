@@ -8,6 +8,8 @@ function order()
     orderData['csrfmiddlewaretoken'] = csrf_token;
     orderData['objects'] = localStorage.getItem('productInCart');
     orderData['bill'] = localStorage.getItem('totalCost');
+    orderData['rest_id'] = localStorage.getItem('rest_id');
+
     
     var form = $("#idForm");
    

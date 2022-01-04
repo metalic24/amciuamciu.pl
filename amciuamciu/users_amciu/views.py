@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from zamowienia.models import Order, Ordered_Items
+from restaurant.models import restaurant
 from .forms import  CreateUserForm
 from restaurant.views import show_restaurants
 
@@ -69,7 +70,7 @@ def users_orders(request):
 
     user = request.user
 
-    orders  = Order.objects.filter(customer = user) 
+    orders  = Order.objects.filter(customer = user).order_by('date')
 
     context = {
         'orders' : orders
@@ -97,13 +98,47 @@ def user_order_details(request, id):
 
 
 
-def users_restaurant_orders(request):
+def users_restaurants(request):
+    
+    user = request.user
 
+    restaurants = restaurant.objects.filter(owner = user) 
     
 
-    context = {}
+    context = {
+        'restaurants': restaurants
+    }
 
-    return render(request,"hello.html", context)
+    return render(request,"restaurant/owners.html", context)
+    
+def restaurants_orders(request, id):
+
+    rest = restaurant.objects.get(pk = id)
+    orders = Order.objects.filter(rest = rest)
+
+
+    context = {
+
+        "orders": orders
+    }
+    return render(request,"restaurant/orders.html", context)
+
+def restaurant_order_details(request, id):
+    
+    user = request.user
+
+    order  = Order.objects.get(pk = id)
+
+    items = Ordered_Items.objects.filter(order = order)
+    
+
+
+    context = {
+        'items': items,
+        'id':id
+    }
+
+    return render(request,"restaurant/orders_details.html", context)
 
 
 
@@ -115,7 +150,5 @@ def log_out(request):
 
 
 
-#todo wylogowanie
 
-#todo przekierowania
  
