@@ -11,7 +11,7 @@
     {{form.as_table}}
 
 </form> {% endcomment %}
-<form class="w3-container w3-half" id="idForm" method="post" enctype="multipart/form">{% csrf_token%}
+<form class="w3-container w3-half" id="idForm" method="post" enctype="multipart/form" action="">{% csrf_token%}
     <div class="w3-input w3-border w3-white">
       <label class="w3-text-black"><b>{{form.street.label}}</b></label>
       {{form.street}}

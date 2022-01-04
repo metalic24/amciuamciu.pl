@@ -1,15 +1,13 @@
 function order()
 {
    
-   
-   
-
 
    
     var orderData ={};
     csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
     orderData['csrfmiddlewaretoken'] = csrf_token;
     orderData['objects'] = localStorage.getItem('productInCart');
+    orderData['bill'] = localStorage.getItem('totalCost');
     
     var form = $("#idForm");
    
@@ -25,7 +23,12 @@ function order()
            
            success: function(data)
            {
-             localStorage.clear();
+            
+            if(data.status == 1){ 
+              localStorage.clear();
+              window.location = "/zamowienia/pay/"+ data.order_id;
+            }
+              
              
            }
          });

@@ -3,7 +3,7 @@
 
 
 
-{%block content%}
+{% block content %}
 
 {% load static %}
 
@@ -33,12 +33,12 @@
 </ol>
 {% endcomment %}
 
-
+<div class= "row">
 
 
     {% for obj in objs %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div class="card large yellow darken-3">
+    <div class="list-group-item d-flex justify-content-between align-items-center col-md-4 ">
+      <div class="card large yellow darken-3 " >
         <div class="card-image">
           <img src={{obj.img_path.url}}>
           <span class="card-title black name">{{obj.name}}</span>
@@ -55,12 +55,12 @@
             <a   class="add-to-cart btn btn-primary black-text" href="#" > Dodaj do zamówienia</a>
         </div>
       </div>
-    </li>
+    </div>
 
     {% endfor %}
 
-  </ul>
+  </div >
 
 
 <script type="text/javascript" src="{% static 'order.js' %}" ></script>
-{% endblock %}
+{% endblock content %}

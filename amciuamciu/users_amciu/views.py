@@ -51,20 +51,61 @@ def viev_login(request):
     return  render(request,"login.html",context)
 
 def hello_login(request):
-    orders =[]
-    user_orders = Order.objects.filter(customer = request.user.id)
-    for order in user_orders:
-        ordered_items = Ordered_Items.objects.filter(order = order)
+   
+        
         
       
           
             
 
     
-    
+    context = {}
    
 
-    return render(request,"hello.html",{} )
+    return render(request,"hello.html", context)
+
+
+def users_orders(request):
+
+    user = request.user
+
+    orders  = Order.objects.filter(customer = user) 
+
+    context = {
+        'orders' : orders
+    }
+
+    return render(request,"zamowienia/users_orders.html", context)
+
+
+def user_order_details(request, id):
+    
+    user = request.user
+
+    order  = Order.objects.get(pk = id)
+
+    items = Ordered_Items.objects.filter(order = order)
+    
+
+
+    context = {
+        'items': items,
+        'id':id
+    }
+
+    return render(request,"zamowienia/users_orders_details.html", context)
+
+
+
+def users_restaurant_orders(request):
+
+    
+
+    context = {}
+
+    return render(request,"hello.html", context)
+
+
 
 def log_out(request):
     auth.logout(request)

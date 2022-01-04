@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+
+
+
+    <div class="card text-center">
+        <div class="card-header">
+          
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Zapłać za zamówienie</h5>
+          <p class="card-text">Kwota do zapłaty to: {{bill}}</p>
+          <form class="w3-container w3-half" id="idForm" method="post" enctype="multipart/form">{% csrf_token%}
+   
+            <p></p>
+            <input type="submit"  class = "btn btn-primary" value="Zapłać" >
+        
+         
+        </form>
+        </div>
+        <div class="card-footer text-muted">
+          
+        </div>
+      </div>
+
+
+
+{% endblock %}
+

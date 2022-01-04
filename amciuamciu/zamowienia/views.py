@@ -1,11 +1,15 @@
+from typing import Reversible
 from django import forms
 from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from django.urls.conf import path
 from amciuamciu.settings import EMAIL_HOST_USER
 from restaurant.views import show_restaurants
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
+from users_amciu.views import hello_login
 
 from zamowienia.models import Ordered_Items, Order
 from .forms import MakeOrder
@@ -51,7 +55,7 @@ def make_order(request):
 		for form_d in form_data:
 			form_dic[form_d['name']] = form_d['value']
 		
-		order = Order(customer = request.user, bill=0, street=form_dic['street'],
+		order = Order(customer = request.user, bill=request.POST.get('bill'), street=form_dic['street'],
 		building_number= form_dic['building_number'], local_number=form_dic['local_number'],
 		city = form_dic['city'], pass_code=form_dic['pass_code'], 
 		paid=False)
@@ -67,17 +71,42 @@ def make_order(request):
 			)
 			order_item.save()
 
+		#wysłanie maila
 		subject = 'Dziękujemy za zamówienie :D'
-		message = 'Po dodkonaniu zapłaty Twoje zamówienie ruszy w drogę :D '
+		message = 'Po dodkonaniu zapłaty Twoje zamówienie o id : '+  str( order.id)+' ruszy w drogę :D '
 		recepient = request.user.email
-		print(recepient)
+		
 		send_mail(subject, 
             message, EMAIL_HOST_USER, [recepient], fail_silently = False)
 		
-    	
+		response = {'status': 1, "order_id": order.id} # for ok
+		return HttpResponse(json.dumps(response), content_type='application/json')
 
 	context={
         'form': form
     }
 	return render(request, 'zamowienia/make_order.html', context)
+
+@login_required(login_url='/users_amciu/login/')
+def pay_for_order(request, id):
+
+	order = Order.objects.get(pk = id)
+	if request.method == 'POST':
+		
+		order.paid = True
+		order.status = 'zaplacone'
+		order.save()
+
+		return redirect(hello_login)
+
+
+	bill = order.bill
+
+	context={
+		'bill': bill
+	}
+
+	return render(request, 'zamowienia/pay.html', context)
+
+
  

@@ -8,6 +8,17 @@ from menu.models import menu
 
 from restaurant.models import restaurant as rest
 
+CHOISES = {
+
+    ('przyjete', 'przyjete'),
+    ('oplacone', 'oplacone'),
+    ('przygotowywane', 'przygotowywane'),
+    ('dostarczne', 'dostarczane'),
+    ('zakonczone', 'zakonczone')
+}
+
+
+
 
 class Order(models.Model):
     customer = ForeignKey(User, on_delete=CASCADE)
@@ -19,6 +30,7 @@ class Order(models.Model):
     city = CharField(max_length=150, null=False)
     pass_code = IntegerField(null=False)
     paid = BooleanField(default=False)
+    status = CharField(max_length=20, choices=CHOISES , default='przyjete')
 
     #todo
     #status zamówienia
