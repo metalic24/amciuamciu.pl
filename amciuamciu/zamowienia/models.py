@@ -13,7 +13,7 @@ CHOISES = {
     ('przyjete', 'przyjete'),
     ('oplacone', 'oplacone'),
     ('przygotowywane', 'przygotowywane'),
-    ('dostarczne', 'dostarczane'),
+    ('dostarczane', 'dostarczane'),
     ('zakonczone', 'zakonczone')
 }
 
@@ -32,7 +32,7 @@ class Order(models.Model):
     paid = BooleanField(default=False)
     status = CharField(max_length=20, choices=CHOISES , default='przyjete')
     rest = ForeignKey(rest, on_delete=CASCADE)
-    date = models.DateField(auto_now_add=True)
+    
 
     #todo
     #status zamówienia
