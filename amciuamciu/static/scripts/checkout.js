@@ -12,11 +12,11 @@ function display_cart()
         Object.values(cartItems).map(item=>{
 
             product_disp.innerHTML += `<tr class="product_row">
-            <td><button onclick="delete_item(${i})"><ion-icon name="close-circle-outline" ></ion-icon></button>${item.name}</td>
+            <td><button onclick="delete_item(${item.id})"><ion-icon name="close-circle-outline" ></ion-icon></button>${item.name}</td>
             <td>${item.price} PLN</td>
-            <td><button onclick="minus_item(${i})"><ion-icon name="arrow-back-circle-outline"></ion-icon></button>
-            ${item.in_cart}<button onclick="add_item(${i})"><ion-icon name="arrow-forward-circle-outline"></ion-icon></button></td>
-            <td><obj id="total_${i}"> ${(item.price * item.in_cart).toPrecision(3)}</obj> PLN</td>
+            <td><button onclick="minus_item(${item.id})"><ion-icon name="arrow-back-circle-outline"></ion-icon></button>
+            ${item.in_cart}<button onclick="add_item(${item.id})"><ion-icon name="arrow-forward-circle-outline"></ion-icon></button></td>
+            <td><obj id="total_${item.id}"> ${(item.price * item.in_cart).toPrecision(3)}</obj> PLN</td>
             
             </tr><
             `;
@@ -77,7 +77,10 @@ function add_item(id)
     var items = JSON.parse( localStorage.getItem("productInCart"));
     var total = parseFloat(localStorage.getItem("totalCost"));
     var in_cart = parseInt( localStorage.getItem("cartNumbers"));
+
+    console.log(id);
     total += parseFloat(items[id].price);
+
     total.toPrecision(3);
     in_cart++;
     items[id].in_cart++;
