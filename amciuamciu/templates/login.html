@@ -14,25 +14,22 @@
 {% endfor %} {% endcomment %}
 
 
-<div class="row">
-    <form class="col s12" method="post">{% csrf_token %}
-      <div class="row">
-        <div class="input-field col s6">
-          <input class="white" placeholder="Username" name="username" type="text">
-        </div>
-        <div class="input-field col s6">
-          <input class="white" placeholder="Password" name="password" type="password">
-        </div>
-      </div>
-      <div class="waves-effect waves-light btn">
-          <input type="submit" value="logowanie">
-      </div>
-    </form>
-    {% for message in messages%}
-        <p id="">{{message}}</p>
-    {% endfor %}
+  <div class="w3-container w3-teal">
+    <h2>Logowanie</h2>
   </div>
-
-
+  
+  <form class="w3-container w3-half" method="post">{% csrf_token%}
+    <label class="w3-text-black"><b>Username</b></label>
+    <input class="w3-input w3-border w3-white" name="username" type="text">
+  
+    <label class="w3-text-black"><b>Password</b></label>
+    <input class="w3-input w3-border w3-white" name="password" type="password">
+  
+    <button class="w3-btn w3-teal" type="submit">Zaloguj</button>
+  {% for message in messages%}
+    <p id="">{{message}}</p>
+  {% endfor %}
+  </form>
+  
   
 {% endblock %}

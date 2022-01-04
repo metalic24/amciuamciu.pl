@@ -21,39 +21,24 @@
 
    {{form.errors}} {% endcomment %}
 
+<div class="w3-container w3-teal">
+  <h2>Rejestracja</h2>
+</div>
 
-   <div class="row">
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          {{form.username}}
-          <label>{{form.username.label}}</label>
-        </div>
-        <div class="input-field col s6">
-          {{form.email}}
-          <label>{{form.email.label}}</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          {{form.password1}}
-          <label>{{form.password1.label}}</label>
-          <span class="helper-text" data-error="wrong" data-success="right">at least 8 characters</span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          {{form.password2}}
-          <label>{{form.password2.label}}</label>
-        </div>
-      </div>
-      <div class="waves-effect waves-light btn">
-        <input type="submit" value="Rejestracja">
-    </div>
-    </form>
+<form class="w3-container w3-third" method="post" enctype="multipart/form">{% csrf_token%}
+  <div class="w3-input w3-border w3-white">
+    <label class="w3-text-black"><b>{{form.username.label}}</b></label>
+    {{form.username}}
+    <label class="w3-text-black"><b>{{form.email.label}}</b></label>
+    {{form.email}}
+    <label class="w3-text-black"><b>{{form.password1.label}}</b></label>
+    {{form.password1}}
+    <label class="w3-text-black"><b>{{form.password2.label}}</b></label>
+    {{form.password2}}
+    <button class="w3-btn w3-teal" type="submit">Zarejestruj</button>
     {{form.errors}}
   </div>
+</form>
 
 
 {% endblock %}

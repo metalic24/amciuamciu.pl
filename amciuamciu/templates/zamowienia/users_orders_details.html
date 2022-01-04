@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+
+{% load static %}
+
+<h1>Twoje zamówienie o id {{id}} </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col"> number</th>
+      <th scope="col">total</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+
+{% for item in items %}
+
+<tr>
+  <th scope="row">{{item.id}}</th>
+  <td>{{item.name}}</td>
+  <td>{{item.total_number}}</td>
+  <td>{{ item.price }}</td>
+  
+</tr>
+
+{% endfor %}
+
+
+   
+  </tbody>
+</table>
+
+
+{% endblock content %}

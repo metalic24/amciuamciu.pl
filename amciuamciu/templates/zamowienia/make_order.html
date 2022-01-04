@@ -7,12 +7,27 @@
 
 {% load static %}
 
-<form id='idForm' method="POST" >{% csrf_token %}
+{% comment %} <form id='idForm' method="POST" >{% csrf_token %}
     {{form.as_table}}
 
+</form> {% endcomment %}
+<form class="w3-container w3-half" id="idForm" method="post" enctype="multipart/form" action="">{% csrf_token%}
+    <div class="w3-input w3-border w3-white">
+      <label class="w3-text-black"><b>{{form.street.label}}</b></label>
+      {{form.street}}
+      <label class="w3-text-black"><b>{{form.building_number.label}}</b></label>
+      {{form.building_number}}
+      <label class="w3-text-black"><b>{{form.local_number.label}}</b></label>
+      {{form.local_number}}
+      <label class="w3-text-black"><b>{{form.city.label}}</b></label>
+      {{form.city}}
+      <label class="w3-text-black"><b>{{form.pass_code.label}}</b></label>
+      {{form.pass_code}}
+      <input type="button" class="btn-success" onclick="order()" value="Zamów i zapłać" />
+
+    </div>
 </form>
 
-<input type="button" class="btn-success" onclick="order()" value="Zamów i zapłać" />
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

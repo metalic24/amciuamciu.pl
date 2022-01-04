@@ -3,7 +3,7 @@
 
 
 
-{%block content%}
+{% block content %}
 
 {% load static %}
 
@@ -33,14 +33,18 @@
 </ol>
 {% endcomment %}
 
+<div class= "row">
 
-<div class="row">
 
     {% for obj in objs %}
-    <div class="col s12 m6">
-      <div class="card yellow darken-3">
+    <div class="list-group-item d-flex justify-content-between align-items-center col-md-4 ">
+      <div class="card large yellow darken-3 " >
+        <div class="card-image">
+          <img src={{obj.img_path.url}}>
+          <span class="card-title black name">{{obj.name}}</span>
+        </div>
         <div class="card-content black-text">
-          <span class="card-title name ">{{obj.name}}</span>
+          
           <p style="display: none;"><obj class="obj">{{obj}}</obj></p>
           <p style="display: none;"><obj class="id">{{obj.id}}</obj></p>
           <p style="display: none;"><obj class="rest_id">{{obj.restaurant_id}}</obj></p>
@@ -55,8 +59,8 @@
 
     {% endfor %}
 
-  </div>
+  </div >
 
 
 <script type="text/javascript" src="{% static 'order.js' %}" ></script>
-{% endblock %}
+{% endblock content %}

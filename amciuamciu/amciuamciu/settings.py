@@ -150,3 +150,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+#gmail_send/settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mkraszan@gmail.com' #prywatny email
+EMAIL_HOST_PASSWORD = 'acfzwukyitkptmcf'  #hasło do aplikacji. Nie jest to moje hasło do poczyty ;) 
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'default from email'

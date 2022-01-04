@@ -4,8 +4,8 @@ body{
 
 p#cart-no{
 
-  background: red;
-  font:white;
+  background: white;
+  color:red;
   clip-path: circle(50%);
   text-align: center;
   
@@ -20,4 +20,8 @@ p#cart-no{
     display: flex;
     justify-content: center;
     background-color: orange;
+}
+
+label{
+    font-size: 20px;
 }

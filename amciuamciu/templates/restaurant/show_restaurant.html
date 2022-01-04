@@ -20,10 +20,12 @@
 {% endfor %} {% endcomment %}
 
 <div class="row">
+
     {% for obj in objs %}
 
-
-    <div class="col s12 m6">
+ 
+    <div class="col-md-4">
+      <a href="../menu/{{obj.id}}">
       <div class="card large yellow darken-3">
           <div class="card-image">
             <img src="{{obj.img_path.url}}">
@@ -34,12 +36,14 @@
           <p>Typ kuchni: {{obj.kitchen_type}}</p>
         </div>
         <div class="card-action yellow lighten-3">
-            <a class="black-text" href="../menu/{{obj.id}}">Zamów</a>
+           
             <a class="black-text" href="../menu/{{obj.id}}/create">Dodaj do menu</a>
             <a class="black-text" href="../{{obj.id}}/delete">Usuń</a>
         </div>
       </div>
+    </a>
     </div>
+
 
     {% endfor %}
 

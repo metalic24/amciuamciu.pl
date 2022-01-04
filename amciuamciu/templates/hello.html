@@ -4,6 +4,9 @@
 
 {% csrf_token %}
 <h1>Hello {{request.user.username}}</h1>
+<br>
+
+<a href= "{% url 'users-orders'%}" class="btn btn-warning"> Twoje zamówienia </a>
 
 {% comment %} <a href="http://localhost:8000/restaurant/create/">Zaloz restauracje</a> {% endcomment %}
 {% endblock %}
