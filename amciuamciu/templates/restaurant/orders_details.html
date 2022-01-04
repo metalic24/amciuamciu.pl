@@ -36,6 +36,23 @@
    
   </tbody>
 </table>
+<div>
+<form method="POST" class="none"> 
+  {% csrf_token %}
+
+
+<label for="exampleFormControlSelect1">Status</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="select">
+      <option value="przygotowywane">przygotowywane</option>
+      <option value="dostarczane">dostarczane</option>
+      <option value="zakonczone">zakonczone</option>
+    </select>
+
+  <input type = "submit" value="Zmien status"/>
+
+
+</form>
+</div>
 
 
 

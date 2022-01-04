@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from zamowienia.models import Order, Ordered_Items
+from zamowienia.forms import UpdateStatus
 from restaurant.models import restaurant
+
 from .forms import  CreateUserForm
 from restaurant.views import show_restaurants
 
@@ -126,15 +128,25 @@ def restaurants_orders(request, id):
 def restaurant_order_details(request, id):
     
     user = request.user
-
+    
     order  = Order.objects.get(pk = id)
 
+    
+
     items = Ordered_Items.objects.filter(order = order)
+
+    if request.method == 'POST':
+    
+        order.status = request.POST.get('select')
+
+        order.save()
     
 
 
     context = {
         'items': items,
+        'order': order,
+        
         'id':id
     }
 
