@@ -1,9 +1,11 @@
+import os
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+import time
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -80,7 +82,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.submit_button = self.driver.find_element(By.CLASS_NAME, "w3-btn")
         self.submit_button.click()
 
-
+        #tworzenie restauracji
         self.create = self.driver.find_element(By.ID, "create_restaurant")
         self.create.click()
 
@@ -90,9 +92,32 @@ class PythonOrgSearch(unittest.TestCase):
         self.input_kitchen = self.driver.find_element(By.NAME, "kitchen_type")
         self.input_kitchen.send_keys("Polska")
 
+        pic = open("test.png")
+        
         self.input_img = self.driver.find_element(By.NAME, "img_path")
-        self.input_img.send_keys("test.png")
+        self.input_img.send_keys(os.path.abspath(pic.name))
 
+       
+       
+
+        self.input_street = self.driver.find_element(By.NAME, "street")
+        self.input_street.send_keys("ulica")
+
+        self.input_local = self.driver.find_element(By.NAME, "local_number")
+        self.input_local.send_keys("1")
+
+        self.input_city = self.driver.find_element(By.NAME, "city")
+        self.input_city.send_keys("Jelenia Góra")
+
+        self.input_code = self.driver.find_element(By.NAME, "pass_code")
+        self.input_code.send_keys("58500")
+
+        
+        
+        self.create = self.driver.find_element(By.CLASS_NAME, "w3-btn")
+        self.create.click()
+
+      
 
 
 
