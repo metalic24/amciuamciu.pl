@@ -97,8 +97,6 @@ class PythonOrgSearch(unittest.TestCase):
         self.input_img = self.driver.find_element(By.NAME, "img_path")
         self.input_img.send_keys(os.path.abspath(pic.name))
 
-       
-       
 
         self.input_street = self.driver.find_element(By.NAME, "street")
         self.input_street.send_keys("ulica")
@@ -117,6 +115,42 @@ class PythonOrgSearch(unittest.TestCase):
         self.create = self.driver.find_element(By.CLASS_NAME, "w3-btn")
         self.create.click()
 
+       
+    def test_D_createrestaurant(self):
+        #logowanie
+        self.loginsite = self.driver.find_element(By.NAME, "Login")
+        self.loginsite.click()
+        
+        self.input_username = self.driver.find_element(By.NAME, "username")
+        self.input_username.send_keys("UnitTest")
+        self.input_password = self.driver.find_element(By.NAME, "password")
+        self.input_password.send_keys("BezpieczneHaslo123")
+        self.submit_button = self.driver.find_element(By.CLASS_NAME, "w3-btn")
+        self.submit_button.click()
+
+        #tworzenie restauracji
+        self.create = self.driver.find_element(By.ID, "UnitTest")
+        self.create.click()
+
+        self.input_name = self.driver.find_element(By.NAME, "name")
+        self.input_name.send_keys("pierogi")
+
+        self.input_description = self.driver.find_element(By.NAME, "description")
+        self.input_description.send_keys("Tradycyjne polskie danie. Podawane z cebulką lub boczusiem")
+
+        
+        self.input_price = self.driver.find_element(By.NAME, "price")
+        self.input_price.send_keys(12.99)
+
+        pic = open("test2.jpg")
+        
+        self.input_img = self.driver.find_element(By.NAME, "img_path")
+        self.input_img.send_keys(os.path.abspath(pic.name))
+
+        
+        self.create = self.driver.find_element(By.CLASS_NAME, "w3-btn")
+        self.create.click()
+
       
 
 
@@ -124,7 +158,7 @@ class PythonOrgSearch(unittest.TestCase):
 
 
         
-    def test_D_deletetestuser(self):
+    def test_E_deletetestuser(self):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/auth/user/")
         self.input_username = self.driver.find_element(By.NAME, "username")
         self.input_username.send_keys("root")
