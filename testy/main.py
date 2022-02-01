@@ -116,7 +116,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.create.click()
 
        
-    def test_D_createrestaurant(self):
+    def test_D_create_dish(self):
         #logowanie
         self.loginsite = self.driver.find_element(By.NAME, "Login")
         self.loginsite.click()
